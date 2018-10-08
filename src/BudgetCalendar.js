@@ -3,7 +3,14 @@ import dateFns from 'date-fns'
 import './BudgetCalendar.scss'
 
 class BudgetCalendar extends Component {
+  constructor () {
+    super()
 
+    this.state = {
+      currentMonth: new Date(),
+      selectedDate: new Date()
+    }
+  }
   render() {
     return (
       <div className="calendar">
