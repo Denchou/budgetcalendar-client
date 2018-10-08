@@ -1,24 +1,19 @@
 import React, { Component } from 'react'
+import dateFns from 'date-fns'
 import './BudgetCalendar.scss'
-import Calendar from 'react-calendar'
 
 class BudgetCalendar extends Component {
-  state = {
-    date: new Date(),
-  }
-
-  onChange = date => this.setState({ date })
 
   render() {
     return (
-      <div className='container budget-calendar'>
-        <Calendar
-          onChange={this.onChange}
-          value={this.state.date}
-        />
+      <div className="calendar">
+        {this.renderHeader()}
+        {this.renderDays()}
+        {this.renderCells()}
       </div>
     )
   }
 }
+
 
 export default BudgetCalendar
