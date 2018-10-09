@@ -59,16 +59,21 @@ class BudgetCalendar extends Component {
     const monthEnd = dateFns.endOfMonth(monthStart)
     const startDate = dateFns.startOfWeek(monthStart)
     const endDate = dateFns.endOfWeek(monthEnd)
-
+    // dateFormat is required for second parameter of dateFns.format()
     const dateFormat = 'D'
+    // empty rows will be pushed with numerical days of the month and returned
     const rows = []
-
+    // hoisted variables to assist with nested loop
+    // days starts as empty array, gets pushed with numeric day of the week and
+    // emptys out after every for loop
     let days = []
+    // day increments and keeps its value beyond different weeks
     let day = startDate
+    // hoised formattedDate to be reusable in nested loop for formated display
     let formattedDate = ''
-    // populates the day of the month, if the day is not in the same month
-    // it is greyed out.
+    // While Loop will run while day is less than or equal to endDate of the month
     while (day <= endDate) {
+      // nested For Loop will populate numeric day of the week
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat)
         const cloneDay = day
