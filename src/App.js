@@ -9,8 +9,9 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import BudgetCalendar from './calendar/BudgetCalendar'
-import Budget from './budget/Budget'
+import BudgetForm from './budget/Budget'
 import Sidebar from './sidebar/Sidebar'
+import BudgetIndex from './budget/BudgetIndex'
 
 class App extends Component {
   constructor () {
@@ -63,8 +64,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/budgetcalendar' render={() => (
             <BudgetCalendar user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/budget-form' render={() => (
-            <Budget user={user} />
+          <AuthenticatedRoute user={user} path='/budget-index' render={() => (
+            <BudgetIndex user={user} />
           )} />
         </sidebar>
       </React.Fragment>

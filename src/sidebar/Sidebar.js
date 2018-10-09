@@ -8,6 +8,7 @@ const authenticatedOptions = (
   <React.Fragment>
     <Link to="/budgetcalendar">View Calendar</Link>
     <Link to='/budget-form'>Budget</Link>
+    <Link to='/budget-index'>List Transactions</Link>
   </React.Fragment>
 )
 
