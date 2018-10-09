@@ -8,7 +8,7 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
-import BudgetCalendar from './BudgetCalendar'
+import BudgetCalendar from './calendar/BudgetCalendar'
 
 class App extends Component {
   constructor () {
@@ -56,7 +56,9 @@ class App extends Component {
             <ChangePassword flash={this.flash} user={user} />
           )} />
         </main>
-        <BudgetCalendar />
+        <AuthenticatedRoute user={user} path='/budgetcalendar' render={() => (
+          <BudgetCalendar user={user} />
+        )} />
       </React.Fragment>
     )
   }
