@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Budget from '../budget/Budget'
 
 import './Header.scss'
 
@@ -7,7 +8,6 @@ const authenticatedOptions = (
   <React.Fragment>
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
-    <Link to="/budgetcalendar">View Calendar</Link>
   </React.Fragment>
 )
 

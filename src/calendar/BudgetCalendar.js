@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // imported dateFns from https://date-fns.org/
 import dateFns from 'date-fns'
 import './BudgetCalendar.scss'
+import Budget from '../budget/Budget'
 
 class BudgetCalendar extends Component {
   constructor (props) {
