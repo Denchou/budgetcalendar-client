@@ -1,6 +1,6 @@
 {
   "name": "budgetcalendar-client",
-  "homepage": "https://github.io/denchou/budgetcalendar-client",
+  "homepage": "https://denchou.github.io/budgetcalendar-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
