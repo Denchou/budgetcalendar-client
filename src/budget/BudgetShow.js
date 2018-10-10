@@ -28,7 +28,7 @@ class BudgetIndex extends React.Component {
       <React.Fragment>
         <h3>Name: {transaction.name}</h3>
         <p>Type: {transaction.is_income? 'Income' : 'Expense'} </p>
-        <p>Amount: {transaction.amount}</p>
+        <p>Amount: ${transaction.amount}</p>
         <p>Frequency: {transaction.frequency}</p>
         <p>Start Date: {transaction.start_date}</p>
         <p>End Date: {transaction.end_date}</p>

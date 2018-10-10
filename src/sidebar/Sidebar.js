@@ -22,12 +22,12 @@ const alwaysOptions = (
 )
 
 const Sidebar = ({ user }) => (
-  <header className="side-bar">
-    <nav>
+  <div className="side-bar">
+    <div>
       { user ? authenticatedOptions : unauthenticatedOptions }
       { alwaysOptions }
-    </nav>
-  </header>
+    </div>
+  </div>
 )
 
 export default Sidebar

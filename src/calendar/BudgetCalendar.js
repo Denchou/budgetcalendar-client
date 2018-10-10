@@ -14,7 +14,7 @@ class BudgetCalendar extends Component {
       selectedDate: new Date(),
       transactions: [],
       assets: [],
-      value: 0,
+      value: '',
     }
   }
 
@@ -40,19 +40,19 @@ class BudgetCalendar extends Component {
 
         switch (e.frequency) {
         case 'daily':
-          multiplier = dateFns.differenceInDays(endDate, e.start_date)
+          multiplier = dateFns.differenceInDays(endDate, e.start_date) + 1
           break
         case 'weekly':
-          multiplier = dateFns.differenceInWeeks(endDate, e.start_date)
+          multiplier = dateFns.differenceInWeeks(endDate, e.start_date) + 1
           break
         case 'bi-weekly':
-          Math.floor(multiplier = dateFns.differenceInWeeks(endDate, e.start_date) / 2)
+          Math.floor(multiplier = dateFns.differenceInWeeks(endDate, e.start_date) / 2) + 1
           break
         case 'monthly':
-          multiplier = dateFns.differenceInMonths(endDate, e.start_date)
+          multiplier = dateFns.differenceInMonths(endDate, e.start_date) + 1
           break
         case 'annually':
-          multiplier = dateFns.differenceInYears(endDate, e.start_date)
+          multiplier = dateFns.differenceInYears(endDate, e.start_date) + 1
           break
         default:
           multiplier = 1
@@ -60,7 +60,7 @@ class BudgetCalendar extends Component {
         e.is_income? (value += (multiplier * e.amount)) : (value -= (multiplier * e.amount))
       }
     })
-    return value
+    return value.toFixed(2)
   }
 
 
@@ -123,7 +123,6 @@ class BudgetCalendar extends Component {
     let days = []
     // day increments and keeps its value beyond different weeks
     let day = startDate
-    console.log(startDate, 'is startDate')
     // hoised formattedDate to be reusable in nested loop for formated display
     let formattedDate = ''
     // While Loop will run while day is less than or equal to endDate of the month
@@ -164,8 +163,6 @@ class BudgetCalendar extends Component {
       selectedDate: day,
       value: newValue
     })
-    console.log(this.state.value, ' is this.state.value')
-
   }
   // method to select the next month in the calendar header
   nextMonth = () => {
