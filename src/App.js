@@ -12,10 +12,12 @@ import BudgetCalendar from './calendar/BudgetCalendar'
 import BudgetForm from './budget/Budget'
 import Sidebar from './sidebar/Sidebar'
 import BudgetIndex from './budget/BudgetIndex'
+import BudgetShow from './budget/BudgetShow'
+
 
 class App extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       user: null,
@@ -60,14 +62,17 @@ class App extends Component {
           )} />
         </main>
         <Sidebar user={user} />
-        <sidebar>
+        <div>
           <AuthenticatedRoute user={user} path='/budgetcalendar' render={() => (
             <BudgetCalendar user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/budget-index' render={() => (
             <BudgetIndex user={user} />
           )} />
-        </sidebar>
+          <AuthenticatedRoute user={user} path='/budget/:id/show' render={() => (
+            <BudgetShow user={user} />
+          )} />
+        </div>
       </React.Fragment>
     )
   }

@@ -39,9 +39,10 @@ class BudgetIndex extends React.Component {
     const transactionRows = this.state.transactions.map(transaction => {
       return (
         <tr key={transaction.id}>
-          <td><Link to={`/transaction/${transaction.id}/show`}>{transaction.name}</Link></td>
+          <td><Link to={`/budget/${transaction.id}/show`}>{transaction.name}</Link></td>
           <td>
-            <Link to={`/transaction/${transaction.id}/edit`}>update</Link> | <a href="" onClick={(event) => this.deleteTransaction(event, transaction.id)}>delete</a>
+            <Link to={`/transaction/${transaction.id}/edit`} params={{ id: transaction.id }}>update</Link> |
+            <a href="" onClick={(event) => this.deleteTransaction(event, transaction.id)}>delete</a>
           </td>
         </tr>
       )
