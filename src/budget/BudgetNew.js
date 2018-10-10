@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 import BudgetForm from './BudgetForm'
+import { withRouter } from 'react-router'
 
 class BudgetEdit extends React.Component {
   constructor(props) {
@@ -10,8 +11,8 @@ class BudgetEdit extends React.Component {
       transaction: {
         name: '',
         amount: 0,
-        start_date: null,
-        end_date: null,
+        start_date: '01/01/2001',
+        end_date: '01/01/2010',
         is_income: true,
         frequency: '',
       }
@@ -25,9 +26,16 @@ class BudgetEdit extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault()
-
+    const { user } = this.props
     const transactionParams = JSON.stringify({transaction: this.state.transaction})
-    const response = await axios.post(`${apiUrl}/movies`, transactionParams)
+    console.log(transactionParams, 'is Transaction Params')
+    const response = await axios.post(`${apiUrl}/transactions`, transactionParams, {
+      'headers': {
+        'Authorization': `Token token=${user.token}`,
+        'Content-Type': 'application/json', }
+    })
+
+    console.log('Post response:', response)
 
     this.props.history.push(`/budget/${response.data.transaction.id}/show`)
   }
@@ -39,7 +47,7 @@ class BudgetEdit extends React.Component {
       <React.Fragment>
         <BudgetForm
           action="create"
-          movie={movie}
+          transaction={transaction}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
@@ -48,4 +56,4 @@ class BudgetEdit extends React.Component {
   }
 }
 
-export default MovieEdit
+export default withRouter(BudgetEdit)

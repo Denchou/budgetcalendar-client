@@ -13,12 +13,10 @@ class BudgetIndex extends React.Component {
 
   async componentDidMount() {
     const { user } = this.props
-    console.log(this, 'is this.props')
     const response = await axios.get(`${apiUrl}/transactions/${this.props.match.params.id}`,
       { 'headers': { 'Authorization': 'Token token=' + user.token}
       })
     this.setState({transaction: response.data.transaction})
-    console.log(response.data.transaction, 'is show data')
   }
 
   render() {
