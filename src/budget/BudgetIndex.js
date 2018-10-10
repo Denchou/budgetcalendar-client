@@ -20,8 +20,6 @@ class BudgetIndex extends React.Component {
       { 'headers': { 'Authorization': 'Token token=' + user.token}
       })
     this.setState({transactions: response.data.transactions})
-
-    console.log(this.props)
   }
 
   async deleteTransaction(event, transactionId) {

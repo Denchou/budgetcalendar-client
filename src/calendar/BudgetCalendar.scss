@@ -212,16 +212,17 @@ main {
   line-height: 1;
   color: var(--main-color);
   opacity: 0;
-  font-size: 8em;
-  position: absolute;
+  font-size: 1em;
+  position: relative;
   top: -.2em;
   right: -.05em;
   transition: .25s ease-out;
   letter-spacing: -.07em;
 }
 
-.calendar .body .cell:hover .bg, .calendar .body .selected .bg  {
-  opacity: 0.05;
+// .calendar .body .cell:hover .bg,
+.calendar .body .selected .bg  {
+  opacity: 0.5;
   transition: .5s ease-in;
 }
 

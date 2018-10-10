@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 // imported dateFns from https://date-fns.org/
 import dateFns from 'date-fns'
 import './BudgetCalendar.scss'
-import Budget from '../budget/Budget'
+import axios from 'axios'
+import apiUrl from '../apiConfig'
 
 class BudgetCalendar extends Component {
   constructor (props) {
@@ -11,8 +12,59 @@ class BudgetCalendar extends Component {
     this.state = {
       currentMonth: new Date(),
       selectedDate: new Date(),
+      transactions: [],
+      assets: [],
+      value: 0,
     }
   }
+
+  async componentDidMount() {
+    const { user } = this.props
+    const response = await axios.get(`${apiUrl}/transactions`,
+      { 'headers': { 'Authorization': 'Token token=' + user.token}
+      })
+    this.setState({transactions: response.data.transactions})
+  }
+
+  calculateBudget = day => {
+    let value = 0
+    let multiplier = 1
+    const transactions = this.state.transactions
+
+
+    transactions.forEach((e) => {
+      if (dateFns.compareDesc(day, e.start_date) === 1) {
+        return value
+      } else  {
+        const endDate = (dateFns.compareDesc(day, e.end_date) === 1)? day : e.end_date
+
+        switch (e.frequency) {
+        case 'daily':
+          multiplier = dateFns.differenceInDays(endDate, e.start_date)
+          break
+        case 'weekly':
+          multiplier = dateFns.differenceInWeeks(endDate, e.start_date)
+          break
+        case 'bi-weekly':
+          Math.floor(multiplier = dateFns.differenceInWeeks(endDate, e.start_date) / 2)
+          break
+        case 'monthly':
+          multiplier = dateFns.differenceInMonths(endDate, e.start_date)
+          break
+        case 'annually':
+          multiplier = dateFns.differenceInYears(endDate, e.start_date)
+          break
+        default:
+          multiplier = 1
+        }
+        e.is_income? (value += (multiplier * e.amount)) : (value -= (multiplier * e.amount))
+      }
+    })
+    return value
+  }
+
+
+
   // render navigation header for the calendar
   renderHeader() {
     const dateFormat = 'MMMM YYYY'
@@ -71,6 +123,7 @@ class BudgetCalendar extends Component {
     let days = []
     // day increments and keeps its value beyond different weeks
     let day = startDate
+    console.log(startDate, 'is startDate')
     // hoised formattedDate to be reusable in nested loop for formated display
     let formattedDate = ''
     // While Loop will run while day is less than or equal to endDate of the month
@@ -90,7 +143,7 @@ class BudgetCalendar extends Component {
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
+            <span className="bg">${this.state.value}</span>
           </div>
         )
         day = dateFns.addDays(day, 1)
@@ -106,9 +159,13 @@ class BudgetCalendar extends Component {
   }
   // method to set current date to the date clicked
   onDateClick = day => {
+    const newValue = this.calculateBudget(day)
     this.setState({
-      selectedDate: day
+      selectedDate: day,
+      value: newValue
     })
+    console.log(this.state.value, ' is this.state.value')
+
   }
   // method to select the next month in the calendar header
   nextMonth = () => {
