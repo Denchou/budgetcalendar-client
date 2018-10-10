@@ -55,8 +55,12 @@ const BudgetForm =(props) => {
 
         </fieldset>
         <fieldset>
-          <input required type='date' id='startDate' name='start_date' value={transaction.start_date} onChange={handleChange} />Start Date
-          <input required type='date' id='endDate' name='end_date' value={transaction.end_date} onChange={handleChange} />End Date
+          <input required type='date' id='startDate'
+            name='start_date' max={transaction.end_date}
+            value={transaction.start_date} onChange={handleChange} />Start Date
+          <input required type='date' id='endDate'
+            name='end_date' min={transaction.start_date}
+            value={transaction.end_date} onChange={handleChange} />End Date
         </fieldset>
         <input type='submit' value='Submit'/>
       </form>
