@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
 
 class BudgetIndex extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class BudgetIndex extends React.Component {
       })
     this.setState({transaction: response.data.transaction})
   }
+
 
   render() {
     const { transaction } = this.state

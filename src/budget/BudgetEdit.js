@@ -11,31 +11,39 @@ class BudgetEdit extends React.Component {
       transaction: {
         name: '',
         amount: 0,
-        start_date: '2001-01-01',
-        end_date: '2010-01-01',
+        start_date: '01/01/2001',
+        end_date: '01/01/2010',
         is_income: true,
-        frequency: 'daily',
+        frequency: '',
       }
     }
   }
 
+  async componentDidMount() {
+    const { user } = this.props
+    const response = await axios.get(`${apiUrl}/transactions/${this.props.match.params.id}`,
+      { 'headers': { 'Authorization': 'Token token=' + user.token}
+      })
+    this.setState({transaction: response.data.transaction})
+  }
+
   handleChange = (event) => {
-    const newTransaction = {...this.state.transaction, [event.target.name]: event.target.value}
-    this.setState({transaction: newTransaction})
+    const editedTransaction = {...this.state.transaction, [event.target.name]: event.target.value}
+
+    this.setState({transaction: editedTransaction})
   }
 
   handleSubmit = async (event) => {
     event.preventDefault()
     const { user } = this.props
     const transactionParams = JSON.stringify({transaction: this.state.transaction})
-    const response = await axios.post(`${apiUrl}/transactions`, transactionParams, {
+    await axios.put(`${apiUrl}/transactions/${this.props.match.params.id}`, transactionParams, {
       'headers': {
         'Authorization': `Token token=${user.token}`,
         'Content-Type': 'application/json', }
     })
 
-
-    this.props.history.push(`/budget/${response.data.transaction.id}/show`)
+    this.props.history.push(`/budget/${this.state.transaction.id}/show`)
   }
 
   render() {
@@ -44,7 +52,7 @@ class BudgetEdit extends React.Component {
     return (
       <React.Fragment>
         <BudgetForm
-          action="create"
+          action="edit"
           transaction={transaction}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}

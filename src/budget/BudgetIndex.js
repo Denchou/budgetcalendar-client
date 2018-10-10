@@ -41,8 +41,8 @@ class BudgetIndex extends React.Component {
         <tr key={transaction.id}>
           <td><Link to={`/budget/${transaction.id}/show`}>{transaction.name}</Link></td>
           <td>
-            <Link to={`/transaction/${transaction.id}/edit`} params={{ id: transaction.id }}>update</Link> |
-            <a href="" onClick={(event) => this.deleteTransaction(event, transaction.id)}>delete</a>
+            <Link to={`/budget/${transaction.id}/edit`}>Edit</Link> |
+            <a href="" onClick={(event) => this.deleteTransaction(event, transaction.id)}>Delete</a>
           </td>
         </tr>
       )
