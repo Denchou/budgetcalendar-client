@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import BudgetCalendar from '../calendar/BudgetCalendar'
 
 const BudgetForm =(props) => {
-
+  const { action, movie, handleChange, handleSubmit } = props
+  const formattedAction = action.charAt(0).toUpperCase() + action.slice(1)
   return (
     <React.Fragment>
-      <h3>Budget Form</h3>
+      <h3>{formattedAction} Budget</h3>
       <form className='Form-row'>
         <label><input type='text' name='name' value='name' id='name' />Name</label>
         <div>

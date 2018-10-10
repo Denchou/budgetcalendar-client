@@ -13,6 +13,7 @@ import BudgetForm from './budget/Budget'
 import Sidebar from './sidebar/Sidebar'
 import BudgetIndex from './budget/BudgetIndex'
 import BudgetShow from './budget/BudgetShow'
+import BudgetNew from './budget/BudgetNew'
 
 
 class App extends Component {
@@ -71,6 +72,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/budget/:id/show' render={() => (
             <BudgetShow user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/budget-new' render={() => (
+            <BudgetNew user={user} />
           )} />
         </div>
       </React.Fragment>
