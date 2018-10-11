@@ -9,49 +9,27 @@ const BudgetForm =(props) => {
       <h3>{formattedAction} Budget</h3>
       <form className='Form-row' onSubmit={handleSubmit} >
         <label htmlFor='name'>Name</label><input required type='text' name='name' value={transaction.name} onChange={handleChange} placeholder='name' />
-        <div>
-          <label><input type='radio' name='is_income' value={true} id='income' required onChange={handleChange} />Income</label>
-          <label><input type='radio' name='is_income' value={false} id='expense' required onChange={handleChange} />Expense</label>
-        </div>
+        <select className='custom-select' required name='is_income' value={transaction.is_income} onChange={handleChange}>
+          <option name='is_income' value='' selected >Select Type</option>
+          <option name='is_income' value={true} id='income' >Income</option>
+          <option name='is_income' value={false} id='expense' >Expense</option>
+        </select>
         <div>
           <span>$</span>
           <input type="number" min="0" step="0.01" onChange={handleChange}
-            data-number-to-fixed="2" data-number-stepfactor="100" value={transaction.amount}
+            title='currency' placeholder="0.00" value={transaction.amount}
             className="currency" name='amount' id='amount' required/>
-          Amount
+          Amount in Dollars
         </div>
         <fieldset>
-          <legend>Select a frequency</legend>
-
-          <div>
-            <input type="radio" id="daily"
-              name="frequency" value="daily" onChange={handleChange} required />
-            <label htmlFor="daily">daily</label>
-          </div>
-
-          <div>
-            <input type="radio" id="weekly"
-              name="frequency" value="weekly" onChange={handleChange} required  />
-            <label htmlFor="weekly">weekly</label>
-          </div>
-
-          <div>
-            <input type="radio" id="bi-weekly"
-              name="frequency" value="bi-weekly" onChange={handleChange} required />
-            <label htmlFor="bi-weekly">bi-weekly</label>
-          </div>
-
-          <div>
-            <input type="radio" id="monthly"
-              name="frequency" value="monthly" onChange={handleChange} required/>
-            <label htmlFor="monthly">monthly</label>
-          </div>
-
-          <div>
-            <input type="radio" id="annually"
-              name="frequency" value="anually" onChange={handleChange} required/>
-            <label htmlFor="anually">annually</label>
-          </div>
+          <select className='custom-select' required name='frequency' value={transaction.frequency} onChange={handleChange}>
+            <option value='' selected >Select Frequenct</option>
+            <option value='daily'>Daily</option>
+            <option value='weekly'>Weekly</option>
+            <option value='bi-weekly'>Bi-weekly</option>
+            <option value='monthly'>Monthly</option>
+            <option value='annually'>Annually</option>
+          </select>
 
         </fieldset>
         <fieldset>
