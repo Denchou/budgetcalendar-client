@@ -16,6 +16,12 @@ class SignUp extends Component {
     }
   }
 
+  clearUser = () => this.setState({
+    email: '',
+    password: '',
+    passwordConfirmation: ''
+  })
+
   handleChange = event => this.setState({
     [event.target.name]: event.target.value
   })
@@ -32,9 +38,15 @@ class SignUp extends Component {
       .then(handleErrors)
       .then(res => res.json())
       .then(res => setUser(res.user))
-      .then(() => flash(messages.signUpSuccess, 'flash-success'))
+      .then(() => {
+        this.clearUser()
+        flash(messages.signUpSuccess, 'flash-success')
+      })
       .then(() => history.push('/'))
-      .catch(() => flash(messages.signUpFailure, 'flash-error'))
+      .catch(() => {
+        this.clearUser()
+        flash(messages.signUpFailure, 'flash-error')
+      })
   }
 
   render () {

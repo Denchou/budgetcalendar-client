@@ -38,9 +38,8 @@ class BudgetIndex extends React.Component {
       return (
         <tr key={transaction.id}>
           <td><Link to={`/budget/${transaction.id}/show`}>{transaction.name}</Link></td>
-          <td>
-            <Link to={`/budget/${transaction.id}/edit`}>Edit</Link> |
-            <a href="" onClick={(event) => this.deleteTransaction(event, transaction.id)}>Delete</a>
+          <td>{transaction.is_income? 'Income' : 'Expense'}</td>
+          <td><Link to={`/budget/${transaction.id}/edit`}>Edit</Link> | <a href="" onClick={(event) => this.deleteTransaction(event, transaction.id)}>Delete</a>
           </td>
         </tr>
       )
@@ -48,8 +47,15 @@ class BudgetIndex extends React.Component {
 
     return (
       <React.Fragment>
-        <h1>Transactions</h1>
-        <table>
+        <h1>Budget</h1>
+        <table className='table table-striped table-hover'>
+          <thead className="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Type</th>
+              <th scope="col">Options</th>
+            </tr>
+          </thead>
           <tbody>
             {transactionRows}
           </tbody>
