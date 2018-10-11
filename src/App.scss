@@ -1,32 +1,23 @@
-$success: #c7f282;
-$warning: #f1e681;
-$error: #f08181;
-$charcoal: #ccc;
-
 .flash-success,
 .flash-warning,
 .flash-error {
-  border: 1px solid $charcoal;
   display: block;
-  left: 25%;
-  padding: 30px;
+  padding: 10px;
   position: fixed;
   text-align: center;
-  top: 15%;
-  width: 50%;
   z-index: 1;
 }
 
 .flash-success {
-  background-color: $success;
+
 }
 
 .flash-warning {
-  background-color: $warning;
+  color: yellow;
 }
 
 .flash-error {
-  background-color: $error;
+  color: red;
 }
 
 .auth-form {

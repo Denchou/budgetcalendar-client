@@ -5,9 +5,11 @@ import './Sidebar.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
-    <NavLink to="/budgetcalendar"><button>View Calendar</button></NavLink>
-    <NavLink to='/budget-new'><button>Add Income/Expense </button></NavLink>
-    <NavLink to='/budget-index'><button>List Income/Expense</button></NavLink>
+    <div className='col col-center'>
+      <NavLink to="/budgetcalendar"><button>View Calendar</button></NavLink>
+      <NavLink to='/budget-new'><button>Add Income/Expense </button></NavLink>
+      <NavLink to='/budget-index'><button>List Income/Expense</button></NavLink>
+    </div>
   </React.Fragment>
 )
 
@@ -22,8 +24,8 @@ const alwaysOptions = (
 )
 
 const Sidebar = ({ user }) => (
-  <div className="side-bar">
-    <div>
+  <div className="side-bar container">
+    <div className='row'>
       { user ? authenticatedOptions : unauthenticatedOptions }
       { alwaysOptions }
     </div>
