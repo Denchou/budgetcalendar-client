@@ -91,7 +91,7 @@ class BudgetCalendar extends Component {
   }
   // render named days of the week for the calendar
   renderDays() {
-    const dateFormat = 'dddd'
+    const dateFormat = 'ddd'
     const days = []
 
     const startDate = dateFns.startOfWeek(this.state.currentMonth)
@@ -179,7 +179,7 @@ class BudgetCalendar extends Component {
   // renders calendar
   render() {
     return (
-      <div className="calendar">
+      <div className="calendar container-flex">
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}

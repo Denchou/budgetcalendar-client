@@ -10,7 +10,7 @@ const BudgetForm =(props) => {
       <form className='Form-row' onSubmit={handleSubmit} >
         <label htmlFor='name'>Name</label><input required type='text' name='name' value={transaction.name} onChange={handleChange} placeholder='name' />
         <select className='custom-select' required name='is_income' value={transaction.is_income} onChange={handleChange}>
-          <option name='is_income' value='' selected >Select Type</option>
+          <option name='is_income' value=''>Select Type</option>
           <option name='is_income' value={true} id='income' >Income</option>
           <option name='is_income' value={false} id='expense' >Expense</option>
         </select>
@@ -23,7 +23,7 @@ const BudgetForm =(props) => {
         </div>
         <fieldset>
           <select className='custom-select' required name='frequency' value={transaction.frequency} onChange={handleChange}>
-            <option value='' selected >Select Frequenct</option>
+            <option value=''>Select Frequenct</option>
             <option value='daily'>Daily</option>
             <option value='weekly'>Weekly</option>
             <option value='bi-weekly'>Bi-weekly</option>
