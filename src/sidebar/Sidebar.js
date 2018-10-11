@@ -1,13 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import './Sidebar.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
-    <Link to="/budgetcalendar">View Calendar</Link>
-    <Link to='/budget-new'>Add Transaction</Link>
-    <Link to='/budget-index'>List Transactions</Link>
+    <NavLink to="/budgetcalendar"><button>View Calendar</button></NavLink>
+    <NavLink to='/budget-new'><button>Add Income/Expense </button></NavLink>
+    <NavLink to='/budget-index'><button>List Income/Expense</button></NavLink>
   </React.Fragment>
 )
 
