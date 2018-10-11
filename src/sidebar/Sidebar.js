@@ -6,9 +6,9 @@ import './Sidebar.scss'
 const authenticatedOptions = (
   <React.Fragment>
     <div className='col col-center'>
-      <NavLink to="/budgetcalendar"><button>View Calendar</button></NavLink>
-      <NavLink to='/budget-new'><button>Add Income/Expense </button></NavLink>
-      <NavLink to='/budget-index'><button>List Income/Expense</button></NavLink>
+      <NavLink to="/budgetcalendar">View Calendar</NavLink> |
+      <NavLink to='/budget-new'> Add Income/Expense</NavLink> |
+      <NavLink to='/budget-index'>List Income/Expense</NavLink>
     </div>
   </React.Fragment>
 )
