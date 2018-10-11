@@ -16,7 +16,7 @@ const BudgetForm =(props) => {
         </select>
         <div>
           <span>$</span>
-          <input type="number" min="0" step="0.01" onChange={handleChange}
+          <input type="number" min="0" step="0.01" max='999999' onChange={handleChange}
             title='currency' placeholder="0.00" value={transaction.amount}
             className="currency" name='amount' id='amount' required/>
           Amount in Dollars

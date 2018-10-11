@@ -11,8 +11,8 @@ class BudgetEdit extends React.Component {
       transaction: {
         name: '',
         amount: 0.00,
-        start_date: 'YYYY-MM-DD',
-        end_date: 'YYYY-MM-DD',
+        start_date: '',
+        end_date: '',
         is_income: '',
         frequency: '',
       }

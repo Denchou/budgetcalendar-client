@@ -25,10 +25,11 @@
 
 :root {
   --main-color: #1a8fff;
+  --bad-color: #e22c14;
   --text-color: #777;
   --text-color-light: #ccc;
   --border-color: #eee;
-  --bg-color: #f9f9f9;
+  --bg-color: #f1f1f1;
   --neutral-color: #fff;
 }
 
@@ -137,8 +138,8 @@ main {
 }
 
 .calendar .header .icon:hover {
-  transform: scale(1.75);
-  transition: .25s ease-out;
+  transform: scale(1.25);
+  transition: .20s ease-out;
   color: var(--main-color);
 }
 
@@ -177,7 +178,7 @@ main {
 
 .calendar .body .selected {
   border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
+  border-image: linear-gradient(45deg, #81fff8 0%,#53cbf1 40%);
   border-image-slice: 1;
 }
 
@@ -207,10 +208,22 @@ main {
   pointer-events: none;
 }
 
-.calendar .body .cell .bg {
+.calendar .body .cell .bgood {
   font-weight: 700;
   line-height: 1;
   color: var(--main-color);
+  opacity: 0;
+  font-size: 1em;
+  position: relative;
+  top: -.2em;
+  right: -.05em;
+  transition: .25s ease-out;
+  letter-spacing: -.07em;
+}
+.calendar .body .cell .bbad {
+  font-weight: 700;
+  line-height: 1;
+  color: var(--bad-color);
   opacity: 0;
   font-size: 1em;
   position: relative;

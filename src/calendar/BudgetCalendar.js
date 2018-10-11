@@ -146,7 +146,7 @@ class BudgetCalendar extends Component {
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
-            <span className="bg">${this.state.value}</span>
+            <span className={`${(this.state.value > 1)? 'bgood' : 'bbad'} bg`}>${this.state.value}</span>
           </div>
         )
         day = dateFns.addDays(day, 1)
