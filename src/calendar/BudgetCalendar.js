@@ -72,7 +72,9 @@ class BudgetCalendar extends Component {
     return (
       <div className="header row flex-middle">
         <div className="col col-start">
-
+          <div className="icon" onClick={this.lastYear}>
+            first_page
+          </div>
           <div className="icon" onClick={this.lastMonth}>
             chevron_left
           </div>
@@ -84,7 +86,9 @@ class BudgetCalendar extends Component {
           <div className="icon" onClick={this.nextMonth}>
             chevron_right
           </div>
-
+          <div className="icon" onClick={this.nextYear}>
+            last_page
+          </div>
         </div>
       </div>
     )
@@ -174,6 +178,18 @@ class BudgetCalendar extends Component {
   lastMonth = () => {
     this.setState({
       currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
+    })
+  }
+  // method to select the next year in the calendar header
+  nextYear = () => {
+    this.setState({
+      currentMonth: dateFns.addYears(this.state.currentMonth, 1)
+    })
+  }
+  // method to select the previous year in the calendar header
+  lastYear = () => {
+    this.setState({
+      currentMonth: dateFns.subYears(this.state.currentMonth, 1)
     })
   }
   // renders calendar
