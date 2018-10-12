@@ -1,15 +1,15 @@
 # Budget Calendar Front End client
-Repo for the API: [Budget Calendar API Repo] (https://github.com/Denchou/budgetcalendar-api)
-Deployed Client Site: [Budget Calendar Deployed Client] (https://denchou.github.io/budgetcalendar-client/)
-Deployed Server Site: [Budget Calendar Deployed Heroku] (https://morning-river-44732.herokuapp.com/)
+Repo for the API: [Budget Calendar API Repo](https://github.com/Denchou/budgetcalendar-api)
+Deployed Client Site: [Budget Calendar Deployed Client](https://denchou.github.io/budgetcalendar-client/)
+Deployed Server Site: [Budget Calendar Deployed Heroku](https://morning-river-44732.herokuapp.com/)
 
 Created with the following technology stack:
 
 * React.js
 * bootstrap
 * Ruby on Rails
-* dateFns [DateFns Site] (https://date-fns.org/) installed with 'npm install date-fns --save'
-* Axios [Axios Site] (https://www.npmjs.com/package/axios) installed with 'npm install axios'
+* dateFns [DateFns Site](https://date-fns.org/) installed with 'npm install date-fns --save'
+* Axios [Axios Site](https://www.npmjs.com/package/axios) installed with 'npm install axios'
 * Sass
 
 ## About the Budget calendar
