@@ -23,8 +23,14 @@ class BudgetCalendar extends Component {
     const response = await axios.get(`${apiUrl}/transactions`,
       { 'headers': { 'Authorization': 'Token token=' + user.token}
       })
-    this.setState({transactions: response.data.transactions})
+
+    this.setState({
+      transactions: response.data.transactions
+    })
+
+    this.onDateClick(dateFns.parse(new Date()))
   }
+
 
   calculateBudget = day => {
     let value = 0
@@ -146,7 +152,7 @@ class BudgetCalendar extends Component {
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
-            <span className={`${(this.state.value > 1)? 'bgood' : 'bbad'} bg`}>${this.state.value}</span>
+            <span className={`${(this.state.value > 0)? 'bgood' : 'bbad'} bg`}>${this.state.value}</span>
           </div>
         )
         day = dateFns.addDays(day, 1)
