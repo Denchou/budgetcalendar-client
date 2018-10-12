@@ -27,7 +27,7 @@ class BudgetCalendar extends Component {
     this.setState({
       transactions: response.data.transactions
     })
-
+    // sets initial value for today's date on calendar initial display
     this.onDateClick(dateFns.parse(new Date()))
   }
 
