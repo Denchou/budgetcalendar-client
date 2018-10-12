@@ -15,6 +15,7 @@ class BudgetCalendar extends Component {
       transactions: [],
       assets: [],
       value: '',
+      stats: [],
     }
   }
 
@@ -31,12 +32,11 @@ class BudgetCalendar extends Component {
     this.onDateClick(dateFns.parse(new Date()))
   }
 
-
   calculateBudget = day => {
     let value = 0
     let multiplier = 1
     const transactions = this.state.transactions
-
+    const statsRecord = []
 
     transactions.forEach((e) => {
       if (dateFns.compareDesc(day, e.start_date) === 1) {
@@ -63,8 +63,14 @@ class BudgetCalendar extends Component {
         default:
           multiplier = 1
         }
-        e.is_income? (value += (multiplier * e.amount)) : (value -= (multiplier * e.amount))
+        const multiplied = multiplier * e.amount
+        e.is_income? (value += multiplied) : (value -= multiplied)
+        e.total = (multiplied).toFixed(2)
+        statsRecord.push(e)
       }
+    })
+    this.setState({
+      stats: statsRecord
     })
     return value.toFixed(2)
   }
@@ -166,6 +172,37 @@ class BudgetCalendar extends Component {
     }
     return <div className="body">{rows}</div>
   }
+
+  renderStats() {
+    const statsRows = this.state.stats.map(stat => {
+      return (
+        <tr key={stat.id}>
+          <td>{stat.name}</td>
+          <td>{stat.is_income? 'Income' : 'Expense'}</td>
+          <td>{stat.amount}</td>
+          <td>{stat.is_income? '$' : '-$'}{stat.total}</td>
+        </tr>
+      )
+    })
+    return (
+      <React.Fragment>
+        <h1 className='col-center'>Budget Statistics</h1>
+        <table className='table table-striped table-hover'>
+          <thead className="thead-dark">
+            <tr>
+              <th scope='col'>Name</th>
+              <th scope='col'>Type</th>
+              <th scope='col'>Amount</th>
+              <th scope="col">Total To Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {statsRows}
+          </tbody>
+        </table>
+      </React.Fragment>
+    )
+  }
   // method to set current date to the date clicked
   onDateClick = day => {
     const newValue = this.calculateBudget(day)
@@ -205,6 +242,7 @@ class BudgetCalendar extends Component {
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
+        {this.renderStats()}
       </div>
     )
   }
