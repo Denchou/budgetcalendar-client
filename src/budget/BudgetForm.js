@@ -23,7 +23,7 @@ const BudgetForm =(props) => {
         </div>
         <fieldset>
           <select className='custom-select' required name='frequency' value={transaction.frequency} onChange={handleChange}>
-            <option value=''>Select Frequenct</option>
+            <option value=''>Select Frequencty</option>
             <option value='daily'>Daily</option>
             <option value='weekly'>Weekly</option>
             <option value='bi-weekly'>Bi-weekly</option>
