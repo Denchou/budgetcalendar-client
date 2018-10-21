@@ -4,7 +4,6 @@ import './index.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App'
 import { HashRouter } from 'react-router-dom'
-import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
 
 const appJsx = (
   <HashRouter>
