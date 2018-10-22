@@ -46,21 +46,23 @@ class BudgetIndex extends React.Component {
     })
 
     return (
-      <React.Fragment>
-        <h1>Budget</h1>
-        <table className='table table-striped table-hover'>
-          <thead className="thead-dark">
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Type</th>
-              <th scope="col">Options</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transactionRows}
-          </tbody>
-        </table>
-      </React.Fragment>
+      this.state.transactions.length? (
+        <React.Fragment>
+          <h1>Budget</h1>
+          <table className='table table-striped table-hover'>
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              {transactionRows}
+            </tbody>
+          </table>
+        </React.Fragment>
+      ) : 'You do not have a budget yet.'
     )
   }
 }

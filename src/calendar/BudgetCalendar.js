@@ -179,28 +179,32 @@ class BudgetCalendar extends Component {
         <tr key={stat.id}>
           <td>{stat.name}</td>
           <td>{stat.is_income? 'Income' : 'Expense'}</td>
-          <td>{stat.amount}</td>
+          <td>${stat.amount}</td>
+          <td>{stat.frequency}</td>
           <td>{stat.is_income? '$' : '-$'}{stat.total}</td>
         </tr>
       )
     })
     return (
-      <React.Fragment>
-        <h1 className='col-center'>Budget Statistics</h1>
-        <table className='table table-striped table-hover'>
-          <thead className="thead-dark">
-            <tr>
-              <th scope='col'>Name</th>
-              <th scope='col'>Type</th>
-              <th scope='col'>Amount</th>
-              <th scope="col">Total To Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {statsRows}
-          </tbody>
-        </table>
-      </React.Fragment>
+      this.state.stats.length? (
+        <React.Fragment>
+          <h1 className='col-center'>Budget Statistics</h1>
+          <table className='table table-striped table-hover'>
+            <thead className="thead-dark">
+              <tr>
+                <th scope='col'>Name</th>
+                <th scope='col'>Type</th>
+                <th scope='col'>Amount</th>
+                <th scope='col'>Frequency</th>
+                <th scope="col">Total To Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {statsRows}
+            </tbody>
+          </table>
+        </React.Fragment>
+      ) : 'Please Create a Budget to View your Stats.'
     )
   }
   // method to set current date to the date clicked

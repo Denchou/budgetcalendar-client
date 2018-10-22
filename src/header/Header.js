@@ -42,7 +42,6 @@ const Header = ({ user }) => (
   <header className="main-header">
     <h1>Budget Calendar</h1>
     <nav>
-      { user && <span>Welcome, {user.email}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
       { alwaysOptions }
     </nav>

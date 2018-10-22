@@ -16,14 +16,14 @@ const BudgetForm =(props) => {
         </select>
         <div>
           <span>$</span>
-          <input type="number" min="0" step="0.01" max='999999' onChange={handleChange}
+          <input type="number" min="0.00" step="0.01" max='999999' onChange={handleChange}
             title='currency' placeholder="0.00" value={transaction.amount}
             className="currency" name='amount' id='amount' required/>
           Amount in Dollars
         </div>
         <fieldset>
           <select className='custom-select' required name='frequency' value={transaction.frequency} onChange={handleChange}>
-            <option value=''>Select Frequencty</option>
+            <option value=''>Select Frequency</option>
             <option value='daily'>Daily</option>
             <option value='weekly'>Weekly</option>
             <option value='bi-weekly'>Bi-weekly</option>
