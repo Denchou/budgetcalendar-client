@@ -95,7 +95,7 @@ class SignIn extends Component {
           margin='dense'
           onChange={this.handleChange}
         />
-        <Button type="submit">Sign In</Button>
+        <Button variant='contained' color='primary' type="submit">Sign In</Button>
       </form>
     )
   }
