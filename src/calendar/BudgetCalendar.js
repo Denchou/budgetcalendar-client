@@ -188,7 +188,7 @@ class BudgetCalendar extends Component {
     return (
       this.state.stats.length? (
         <React.Fragment>
-          <h1 className='col-center'>Budget Statistics</h1>
+          <h2 className='col-center'>Budget Statistics</h2>
           <table className='table table-striped table-hover'>
             <thead className="thead-dark">
               <tr>

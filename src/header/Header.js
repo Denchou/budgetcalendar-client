@@ -9,10 +9,9 @@ import './Header.scss'
 const style = {
   borderRadius: 3,
   border: 0,
-  color: 'white',
+  color: 'darkblue',
   height: 38,
   padding: '0 30px',
-  background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
   boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
   marginLeft: '2px',
   marginRight: '2px'
@@ -34,13 +33,13 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <React.Fragment>
-    <Button style={style} variant='contained' component={Link} to="/">Home</Button>
+    <Button style={style} variant='outlined' component={Link} to="/">Home</Button>
   </React.Fragment>
 )
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1>Budget Calendar</h1>
+    <h1>calendar_today BUDGET CALENDAR</h1>
     <nav>
       { user ? authenticatedOptions : unauthenticatedOptions }
       { alwaysOptions }

@@ -1,4 +1,25 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
 $charcoal: #bbb;
+
+h1 {
+  font-family: 'Material Icons', serif;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  color: darkblue;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
 
 .main-header {
   align-items: center;
@@ -6,6 +27,7 @@ $charcoal: #bbb;
   display: flex;
   height: 100px;
   padding: 0 20px;
+  background: radial-gradient(#81fff8 20%, #53cbf1 80%)
 
   // a,
   // span {

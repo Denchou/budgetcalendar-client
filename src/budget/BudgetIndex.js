@@ -48,7 +48,7 @@ class BudgetIndex extends React.Component {
     return (
       this.state.transactions.length? (
         <React.Fragment>
-          <h1>Budget</h1>
+          <h2>Budget</h2>
           <table className='table table-striped table-hover'>
             <thead className="thead-dark">
               <tr>
