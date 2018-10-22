@@ -35,6 +35,7 @@ class BudgetCalendar extends Component {
   calculateBudget = day => {
     let value = 0
     let multiplier = 1
+    let daysDiff = 1
     const transactions = this.state.transactions
     const statsRecord = []
 
@@ -47,21 +48,31 @@ class BudgetCalendar extends Component {
         switch (e.frequency) {
         case 'daily':
           multiplier = dateFns.differenceInDays(endDate, e.start_date) + 1
+          daysDiff = 1
           break
         case 'weekly':
           multiplier = dateFns.differenceInWeeks(endDate, e.start_date) + 1
+          daysDiff = 7
           break
         case 'bi-weekly':
           Math.floor(multiplier = dateFns.differenceInWeeks(endDate, e.start_date) / 2) + 1
+          daysDiff = 14
           break
         case 'monthly':
           multiplier = dateFns.differenceInMonths(endDate, e.start_date) + 1
+          daysDiff = 30
           break
         case 'annually':
           multiplier = dateFns.differenceInYears(endDate, e.start_date) + 1
+          daysDiff = 365
           break
         default:
           multiplier = 1
+        }
+        e.days = []
+        // locate all the days a transaction would likely happen and pushes it into a new array e.days inside the object e (transactions)
+        for (let i = e.start_date; dateFns.isAfter(e.end_date, i) || dateFns.isSameDay(e.end_date, i); i = dateFns.addDays(i, daysDiff) ) {
+          e.days.push(i)
         }
         const multiplied = multiplier * e.amount
         e.is_income? (value += multiplied) : (value -= multiplied)
@@ -72,7 +83,9 @@ class BudgetCalendar extends Component {
     this.setState({
       stats: statsRecord
     })
+    console.log(this.state, ' Is the State')
     return value.toFixed(2)
+
   }
 
 
@@ -240,6 +253,10 @@ class BudgetCalendar extends Component {
     })
   }
   // renders calendar
+  renderTransaction = (day) => {
+    console.log('The day is: ', day)
+    console.log('THe transactions are: ', this.state.transactions)
+  }
   render() {
     return (
       <div className="calendar container-flex">

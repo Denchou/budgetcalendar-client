@@ -100,8 +100,6 @@ class SignIn extends Component {
     )
   }
 }
-SignIn.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
+
 
 export default withRouter(SignIn)
