@@ -214,9 +214,9 @@ main {
   line-height: 1;
   color: var(--main-color);
   opacity: 0;
-  font-size: 1em;
+  font-size: 2vw;
   position: relative;
-  top: -.2em;
+  top: 50%;
   right: -.05em;
   transition: .25s ease-out;
   letter-spacing: -.07em;
@@ -226,9 +226,9 @@ main {
   line-height: 1;
   color: var(--bad-color);
   opacity: 0;
-  font-size: 1em;
+  font-size: 1.5vw;
   position: relative;
-  top: -.2em;
+  top: 40%;
   right: -.05em;
   transition: .25s ease-out;
   letter-spacing: -.07em;
