@@ -1,13 +1,36 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-
 import { signIn } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { withStyles } from '@material-ui/core/styles'
+import MenuItem from '@material-ui/core/MenuItem'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  dense: {
+    marginTop: 19,
+  },
+  menu: {
+    width: 200,
+  },
+})
 
 class SignIn extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       email: '',
@@ -52,28 +75,33 @@ class SignIn extends Component {
     return (
       <form className='auth-form' onSubmit={this.signIn}>
         <h3>Sign In</h3>
-        <label htmlFor="email">Email</label>
-        <input
+        <TextField
           required
           type="email"
           name="email"
           value={email}
           placeholder="Email"
+          variant='outlined'
+          margin='dense'
           onChange={this.handleChange}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <TextField
           required
           name="password"
           value={password}
           type="password"
           placeholder="Password"
+          variant='outlined'
+          margin='dense'
           onChange={this.handleChange}
         />
-        <button type="submit">Sign In</button>
+        <Button type="submit">Sign In</Button>
       </form>
     )
   }
+}
+SignIn.propTypes = {
+  classes: PropTypes.object.isRequired,
 }
 
 export default withRouter(SignIn)

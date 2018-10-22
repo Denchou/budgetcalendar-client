@@ -14,12 +14,14 @@ const style = {
   padding: '0 30px',
   background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
   boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+  marginLeft: '2px',
+  marginRight: '2px'
 }
 
 const authenticatedOptions = (
   <React.Fragment>
-    <Link to="/change-password">Change Password</Link>
-    <Link to="/sign-out">Sign Out</Link>
+    <Button style={style} component={Link} to="/change-password">Change Password</Button>
+    <Button style={style} component={Link} to="/sign-out">Sign Out</Button>
   </React.Fragment>
 )
 
