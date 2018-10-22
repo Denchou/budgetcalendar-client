@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import BudgetCalendar from '../calendar/BudgetCalendar'
 
+import './Budget.scss'
+
 const BudgetForm =(props) => {
   const { action, transaction, handleChange, handleSubmit } = props
   const formattedAction = action.charAt(0).toUpperCase() + action.slice(1)
   return (
     <React.Fragment>
       <h3>{formattedAction} Budget</h3>
-      <form className='Form-row' onSubmit={handleSubmit} >
+      <form className='Form-row form' onSubmit={handleSubmit} >
         <label htmlFor='name'>Name</label><input required type='text' name='name' value={transaction.name} onChange={handleChange} placeholder='name' />
         <select className='custom-select' required name='is_income' value={transaction.is_income} onChange={handleChange}>
           <option name='is_income' value=''>Select Type</option>
@@ -16,7 +18,7 @@ const BudgetForm =(props) => {
         </select>
         <div>
           <span>$</span>
-          <input type="number" min="0.00" step="0.01" max='999999' onChange={handleChange}
+          <input type="number" min="0.01" step="0.01" max='999999' onChange={handleChange}
             title='currency' placeholder="0.00" value={transaction.amount}
             className="currency" name='amount' id='amount' required/>
           Amount in Dollars
