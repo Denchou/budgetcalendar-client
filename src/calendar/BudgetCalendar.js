@@ -234,26 +234,30 @@ class BudgetCalendar extends Component {
   // method to select the next month in the calendar header
   nextMonth = () => {
     this.setState({
-      currentMonth: dateFns.addMonths(this.state.currentMonth, 1)
+      currentMonth: dateFns.addMonths(this.state.currentMonth, 1),
     })
+    this.calculateBudget(dateFns.startOfMonth(dateFns.addMonths(this.state.currentMonth, 1)))
   }
   // method to select the previous month in the calendar header
   lastMonth = () => {
     this.setState({
       currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
     })
+    this.calculateBudget(dateFns.startOfMonth(dateFns.subMonths(this.state.currentMonth, 1)))
   }
   // method to select the next year in the calendar header
   nextYear = () => {
     this.setState({
       currentMonth: dateFns.addYears(this.state.currentMonth, 1)
     })
+    this.calculateBudget(dateFns.startOfMonth(dateFns.addMonths(this.state.currentMonth, 1)))
   }
   // method to select the previous year in the calendar header
   lastYear = () => {
     this.setState({
       currentMonth: dateFns.subYears(this.state.currentMonth, 1)
     })
+    this.calculateBudget(dateFns.startOfMonth(dateFns.subMonths(this.state.currentMonth, 1)))
   }
   // renders calendar
   renderTransaction = (day) => {
