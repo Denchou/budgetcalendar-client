@@ -205,6 +205,9 @@ main {
   font-weight: 700;
 }
 
+
+
+
 .calendar .body .disabled {
   color: var(--text-color-light);
   pointer-events: none;
@@ -234,6 +237,21 @@ main {
   transition: .25s ease-out;
   letter-spacing: -.07em;
 }
+.calendar .body .cell .tday {
+  position: relative;
+  font-size: 0.75vw;
+  font-weight: 100;
+  right: 80%;
+}
+.calendar .body .cell .red{
+  color: red;
+}
+
+.calendar .body .cell .blue{
+  color: blue;
+}
+
+
 
 // .calendar .body .cell:hover .bg,
 .calendar .body .selected .bg  {

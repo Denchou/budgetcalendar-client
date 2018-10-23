@@ -16,6 +16,7 @@ class BudgetCalendar extends Component {
       assets: [],
       value: '',
       stats: [],
+      finishLoad: false,
     }
   }
 
@@ -83,7 +84,6 @@ class BudgetCalendar extends Component {
     this.setState({
       stats: statsRecord
     })
-    console.log(this.state, ' Is the State')
     return value.toFixed(2)
 
   }
@@ -172,6 +172,7 @@ class BudgetCalendar extends Component {
           >
             <span className="number">{formattedDate}</span>
             <span className={`${(this.state.value > 0)? 'bgood' : 'bbad'} bg`}>${this.state.value}</span>
+            {this.state.finishLoad? this.renderTransaction(day) : 'x'}
           </div>
         )
         day = dateFns.addDays(day, 1)
@@ -225,8 +226,10 @@ class BudgetCalendar extends Component {
     const newValue = this.calculateBudget(day)
     this.setState({
       selectedDate: day,
-      value: newValue
+      value: newValue,
+      finishLoad: true,
     })
+    this.renderTransaction(day)
   }
   // method to select the next month in the calendar header
   nextMonth = () => {
@@ -254,9 +257,30 @@ class BudgetCalendar extends Component {
   }
   // renders calendar
   renderTransaction = (day) => {
-    console.log('The day is: ', day)
-    console.log('THe transactions are: ', this.state.transactions)
+    const trans = this.state.transactions
+    const dayList = trans.filter(transaction => {
+      return (transaction.days.some(e => {
+        return dateFns.isSameDay(day, e)
+      }))
+    })
+    const transDay = dayList.map(e => {
+      return (
+        <tr className={e.is_income? 'tday blue number' : 'tday red number'}key={e.name}>{e.name}: ${e.amount}</tr>
+      )
+    })
+    return (
+      <React.Fragment>
+        <table className='table table-striped table-hover'>
+          <thead className="thead-dark">
+            <td>
+              {transDay}
+            </td>
+          </thead>
+        </table>
+      </React.Fragment>
+    )
   }
+
   render() {
     return (
       <div className="calendar container-flex">
