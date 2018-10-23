@@ -172,7 +172,7 @@ class BudgetCalendar extends Component {
           >
             <span className="number">{formattedDate}</span>
             <span className={`${(this.state.value > 0)? 'bgood' : 'bbad'} bg`}>${this.state.value}</span>
-            {this.state.finishLoad? this.renderTransaction(day) : 'x'}
+            {this.state.finishLoad? this.renderTransaction(day) : '...loading'}
           </div>
         )
         day = dateFns.addDays(day, 1)
