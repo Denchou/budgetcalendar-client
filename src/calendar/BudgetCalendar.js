@@ -259,9 +259,11 @@ class BudgetCalendar extends Component {
   renderTransaction = (day) => {
     const trans = this.state.transactions
     const dayList = trans.filter(transaction => {
-      return (transaction.days.some(e => {
-        return dateFns.isSameDay(day, e)
-      }))
+      if (transaction.days) {
+        return (transaction.days.some(e => {
+          return dateFns.isSameDay(day, e)
+        }))
+      }
     })
     const transDay = dayList.map(e => {
       return (
